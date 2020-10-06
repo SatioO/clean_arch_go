@@ -3,7 +3,7 @@ package registry
 import (
 	"net/http"
 
-	handler "github.com/satioO/togo/app/adapter/handlers/http"
+	handler "github.com/satioO/togo/app/adapter/handler/http"
 	"github.com/satioO/togo/app/adapter/repository"
 	"github.com/satioO/togo/app/usecase"
 )
