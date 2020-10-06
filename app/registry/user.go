@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	handler "github.com/satioO/togo/app/adapter/handler/http"
-	"github.com/satioO/togo/app/adapter/repository"
+	repository "github.com/satioO/togo/app/adapter/repository/mongo"
 	"github.com/satioO/togo/app/usecase"
 )
 
