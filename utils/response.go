@@ -12,8 +12,13 @@ func RespondWithError(w http.ResponseWriter, code int, msg string) {
 
 // RespondWithJSON ...
 func RespondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
-	response, _ := json.Marshal(payload)
 	w.Header().Set("Content-Type", "application/json")
+
+	response, _ := json.Marshal(map[string]interface{}{
+		"data":       payload,
+		"statusCode": code,
+	})
+
 	w.WriteHeader(code)
 	w.Write(response)
 }

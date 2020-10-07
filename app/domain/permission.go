@@ -1,6 +1,8 @@
 package domain
 
 import (
+	"errors"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -11,11 +13,11 @@ const (
 	// ReadAccess ...
 	ReadAccess AccessLevel = "Read"
 	// WriteAccess ...
-	WriteAccess AccessLevel = "Write"
+	WriteAccess = "Write"
 	// ListAccess ...
-	ListAccess AccessLevel = "List"
+	ListAccess = "List"
 	// FullAccess ...
-	FullAccess AccessLevel = "FullAccess"
+	FullAccess = "FullAccess"
 )
 
 // Permission ...
@@ -23,4 +25,17 @@ type Permission struct {
 	ID          primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name        string             `json:"name,omitempty" bson:"name,omitempty"`
 	AccessLevel []AccessLevel      `json:"accessLevel" bson:"accessLevel"`
+}
+
+// ValidateAccessLevel ...
+func ValidateAccessLevel(access []AccessLevel) error {
+	var err error
+
+	for _, level := range access {
+		if level != ReadAccess && level != WriteAccess && level != ListAccess && level != FullAccess {
+			err = errors.New("AccessLevel Mismatched")
+		}
+	}
+
+	return err
 }

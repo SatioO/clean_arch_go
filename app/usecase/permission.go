@@ -1,6 +1,9 @@
 package usecase
 
 import (
+	"context"
+
+	"github.com/satioO/togo/app/domain"
 	"github.com/satioO/togo/app/usecase/port/repository"
 )
 
@@ -14,12 +17,12 @@ func NewPermissionUsecase(repo repository.PermissionRepository) *PermissionUseCa
 	return &PermissionUseCase{repo}
 }
 
-// ListPermission ....
-func (r *PermissionUseCase) ListPermission() error {
-	return nil
+// ListPermissions ....
+func (r *PermissionUseCase) ListPermissions(ctx context.Context) ([]domain.Permission, error) {
+	return r.repo.Find(ctx)
 }
 
 // CreatePermission ....
-func (r *PermissionUseCase) CreatePermission() error {
-	return nil
+func (r *PermissionUseCase) CreatePermission(ctx context.Context, permission *domain.Permission) error {
+	return r.repo.Save(ctx, permission)
 }

@@ -1,9 +1,13 @@
 package repository
 
-import "context"
+import (
+	"context"
+
+	"github.com/satioO/togo/app/domain"
+)
 
 // PermissionRepository ...
 type PermissionRepository interface {
-	Find(context.Context) error
-	Save(context.Context) error
+	Find(context.Context) ([]domain.Permission, error)
+	Save(context.Context, *domain.Permission) error
 }

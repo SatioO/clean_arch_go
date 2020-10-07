@@ -13,6 +13,6 @@ func (r *registry) RegisterPermissionHandler() {
 	uc := usecase.NewPermissionUsecase(repo)
 	handle := handler.NewPermissionHandler(uc)
 
-	r.router.HandleFunc("/roles", handle.ListPermissions).Methods(http.MethodGet)
-	r.router.HandleFunc("/roles", handle.CreatePermission).Methods(http.MethodPost)
+	r.router.HandleFunc("/permissions", handle.ListPermissions).Methods(http.MethodGet)
+	r.router.HandleFunc("/permissions", handle.CreatePermission).Methods(http.MethodPost)
 }
