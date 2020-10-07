@@ -14,6 +14,7 @@ type registry struct {
 type Registry interface {
 	RegisterUserHandler()
 	RegisterRoleHandler()
+	RegisterPermissionHandler()
 }
 
 // NewRegistry ...

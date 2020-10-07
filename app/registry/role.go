@@ -14,5 +14,5 @@ func (r *registry) RegisterRoleHandler() {
 	handle := handler.NewRoleHandler(uc)
 
 	r.router.HandleFunc("/roles", handle.FindRoles).Methods(http.MethodGet)
-	r.router.HandleFunc("/roles", handle.CreateRoles).Methods(http.MethodPost)
+	r.router.HandleFunc("/roles", handle.CreateRole).Methods(http.MethodPost)
 }
