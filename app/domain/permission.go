@@ -22,5 +22,5 @@ const (
 type Permission struct {
 	ID          primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
 	Name        string             `json:"name,omitempty" bson:"name,omitempty"`
-	AccessLevel []AccessLevel      `json:"accessLevel,omitempty" bson:"accessLevel,omitempty"`
+	AccessLevel []AccessLevel      `json:"accessLevel" bson:"accessLevel"`
 }

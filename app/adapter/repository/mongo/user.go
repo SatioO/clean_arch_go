@@ -63,10 +63,6 @@ func (r *UserRepository) Save(ctx context.Context, user *domain.User) error {
 		UpdatedOn: time.Now(),
 	})
 
-	if err != nil {
-		return err
-	}
-
 	if len(user.Address) > 0 {
 		var address []interface{}
 
@@ -76,13 +72,7 @@ func (r *UserRepository) Save(ctx context.Context, user *domain.User) error {
 		}
 
 		_, err = r.db.Collection("address").InsertMany(ctx, address)
-
-		if err != nil {
-			return err
-		}
-
-		return nil
 	}
 
-	return nil
+	return err
 }

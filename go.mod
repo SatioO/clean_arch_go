@@ -3,7 +3,7 @@ module github.com/satioO/togo
 go 1.15
 
 require (
-	github.com/aws/aws-sdk-go v1.35.3 // indirect
+	github.com/aws/aws-sdk-go v1.35.3
 	github.com/cosmtrek/air v1.21.2 // indirect
 	github.com/creack/pty v1.1.11 // indirect
 	github.com/fatih/color v1.9.0 // indirect

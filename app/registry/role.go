@@ -13,6 +13,6 @@ func (r *registry) RegisterRoleHandler() {
 	uc := usecase.NewRoleUsecase(repo)
 	handle := handler.NewRoleHandler(uc)
 
-	r.router.HandleFunc("/roles", handle.FindRoles).Methods(http.MethodGet)
+	r.router.HandleFunc("/roles", handle.ListRoles).Methods(http.MethodGet)
 	r.router.HandleFunc("/roles", handle.CreateRole).Methods(http.MethodPost)
 }
