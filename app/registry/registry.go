@@ -13,6 +13,7 @@ type registry struct {
 // Registry ...
 type Registry interface {
 	RegisterUserHandler()
+	RegisterRoleHandler()
 }
 
 // NewRegistry ...

@@ -21,6 +21,7 @@ func main() {
 
 	_registry := registry.NewRegistry(db, r)
 	_registry.RegisterUserHandler()
+	_registry.RegisterRoleHandler()
 
 	fmt.Println("App started listening on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", r))
