@@ -21,3 +21,4 @@ type Registry interface {
 func NewRegistry(db *mongo.Database, router *mux.Router) Registry {
 	return &registry{db, router}
 }
+
