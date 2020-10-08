@@ -47,14 +47,7 @@ func (u *PermissionHandler) CreatePermission(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	err := domain.ValidateAccessLevel(permission.AccessLevel)
-
-	if err != nil {
-		utils.RespondWithError(w, http.StatusInternalServerError, err.Error())
-		return
-	}
-
-	err = u.uc.CreatePermission(ctx, &permission)
+	err := u.uc.CreatePermission(ctx, &permission)
 
 	if err != nil {
 		utils.RespondWithError(w, http.StatusInternalServerError, err.Error())
