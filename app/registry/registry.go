@@ -14,11 +14,10 @@ type registry struct {
 type Registry interface {
 	RegisterUserHandler()
 	RegisterRoleHandler()
-	RegisterPermissionHandler()
+	RegisterPolicyHandler()
 }
 
 // NewRegistry ...
 func NewRegistry(db *mongo.Database, router *mux.Router) Registry {
 	return &registry{db, router}
 }
-
