@@ -18,7 +18,19 @@ func NewPolicyUsecase() *PolicyUseCase {
 
 // ListPolicies ....
 func (r *PolicyUseCase) ListPolicies(ctx context.Context) ([]domain.Policy, error) {
-	return nil, nil
+	var files []domain.Policy
+	var policy domain.Policy
+	path := "./static/policies/"
+
+	fileInfo, _ := ioutil.ReadDir(path)
+
+	for _, v := range fileInfo {
+		file, _ := ioutil.ReadFile(path + v.Name())
+		json.Unmarshal(file, &policy)
+		files = append(files, policy)
+	}
+
+	return files, nil
 }
 
 // CreatePolicy ....

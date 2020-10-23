@@ -26,14 +26,14 @@ func (u *PolicyHandler) ListPolicies(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	Policys, err := u.uc.ListPolicies(ctx)
+	policies, err := u.uc.ListPolicies(ctx)
 
 	if err != nil {
 		utils.RespondWithError(w, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	utils.RespondWithJSON(w, http.StatusOK, Policys)
+	utils.RespondWithJSON(w, http.StatusOK, policies)
 }
 
 // CreatePolicy ...

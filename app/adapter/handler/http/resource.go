@@ -24,7 +24,17 @@ func NewResourceHandler(uc usecase.ResourceUsecase) *ResourceHandler {
 
 // ListResources ...
 func (u *ResourceHandler) ListResources(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
+	resources, err := u.uc.ListResources(ctx)
+
+	if err != nil {
+		utils.RespondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	utils.RespondWithJSON(w, http.StatusOK, resources)
 }
 
 // CreateResource ...
@@ -39,5 +49,12 @@ func (u *ResourceHandler) CreateResource(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	u.uc.CreateResource(ctx, resource)
+	err := u.uc.CreateResource(ctx, resource)
+
+	if err != nil {
+		utils.RespondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	utils.RespondWithJSON(w, http.StatusOK, "Resource created successfully")
 }

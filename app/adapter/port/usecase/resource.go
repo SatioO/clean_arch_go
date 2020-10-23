@@ -8,6 +8,6 @@ import (
 
 // ResourceUsecase ...
 type ResourceUsecase interface {
-	ListResources(context.Context) []domain.Resource
+	ListResources(context.Context) ([]domain.Resource, error)
 	CreateResource(context.Context, domain.Resource) error
 }
