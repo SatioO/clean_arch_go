@@ -15,6 +15,7 @@ type Registry interface {
 	RegisterUserHandler()
 	RegisterRoleHandler()
 	RegisterPolicyHandler()
+	RegisterResourceHandler()
 }
 
 // NewRegistry ...

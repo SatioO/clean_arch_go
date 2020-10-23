@@ -14,5 +14,5 @@ func (r *registry) RegisterResourceHandler() {
 	handle := handler.NewResourceHandler(uc)
 
 	r.router.HandleFunc("/resources", handle.ListResources).Methods(http.MethodGet)
-	r.router.HandleFunc("/resources", handle.ListResources).Methods(http.MethodPost)
+	r.router.HandleFunc("/resources", handle.CreateResource).Methods(http.MethodPost)
 }

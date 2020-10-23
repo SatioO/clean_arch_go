@@ -23,6 +23,7 @@ func main() {
 	_registry.RegisterUserHandler()
 	_registry.RegisterRoleHandler()
 	_registry.RegisterPolicyHandler()
+	_registry.RegisterResourceHandler()
 
 	fmt.Println("App started listening on port 3000")
 	log.Fatal(http.ListenAndServe(":3000", router))

@@ -2,6 +2,8 @@ package usecase
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 
 	"github.com/satioO/togo/app/domain"
 	"github.com/satioO/togo/app/usecase/port/repository"
@@ -23,6 +25,13 @@ func (r *ResourceUsecase) ListResources(context.Context) []domain.Resource {
 }
 
 // CreateResource ...
-func (r *ResourceUsecase) CreateResource(context.Context, domain.Resource) error {
-	return nil
+func (r *ResourceUsecase) CreateResource(ctx context.Context, resource domain.Resource) error {
+	file, err := json.Marshal(&resource)
+
+	if err != nil {
+		return err
+	}
+
+	err = ioutil.WriteFile("./static/resources/"+resource.Name+".json", file, 0644)
+	return err
 }
