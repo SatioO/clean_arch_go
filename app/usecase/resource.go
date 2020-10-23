@@ -6,17 +6,14 @@ import (
 	"io/ioutil"
 
 	"github.com/satioO/togo/app/domain"
-	"github.com/satioO/togo/app/usecase/port/repository"
 )
 
 // ResourceUsecase ...
-type ResourceUsecase struct {
-	repo repository.ResourceRepository
-}
+type ResourceUsecase struct{}
 
 // NewResourceUsecase ...
-func NewResourceUsecase(repo repository.ResourceRepository) *ResourceUsecase {
-	return &ResourceUsecase{repo}
+func NewResourceUsecase() *ResourceUsecase {
+	return &ResourceUsecase{}
 }
 
 // ListResources ...
