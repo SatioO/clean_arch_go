@@ -1,0 +1,12 @@
+{
+    "name": "canAccessProfile",
+    "type": "system managed",
+    "effect": "Allow",
+    "resource": [
+        "profile"
+    ],
+    "action": [
+        "Read",
+        "List"
+    ]
+}

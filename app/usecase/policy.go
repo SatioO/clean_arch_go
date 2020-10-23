@@ -2,27 +2,33 @@ package usecase
 
 import (
 	"context"
+	"encoding/json"
+	"io/ioutil"
 
 	"github.com/satioO/togo/app/domain"
-	"github.com/satioO/togo/app/usecase/port/repository"
 )
 
 // PolicyUseCase ...
-type PolicyUseCase struct {
-	repo repository.PolicyRepository
-}
+type PolicyUseCase struct{}
 
 // NewPolicyUsecase ...
-func NewPolicyUsecase(repo repository.PolicyRepository) *PolicyUseCase {
-	return &PolicyUseCase{repo}
+func NewPolicyUsecase() *PolicyUseCase {
+	return &PolicyUseCase{}
 }
 
 // ListPolicies ....
 func (r *PolicyUseCase) ListPolicies(ctx context.Context) ([]domain.Policy, error) {
-	return r.repo.Find(ctx)
+	return nil, nil
 }
 
 // CreatePolicy ....
 func (r *PolicyUseCase) CreatePolicy(ctx context.Context, policy *domain.Policy) error {
-	return r.repo.Save(ctx, policy)
+	file, err := json.Marshal(&policy)
+
+	if err != nil {
+		return err
+	}
+
+	err = ioutil.WriteFile("./static/policies/"+policy.Name+".json", file, 0644)
+	return err
 }
