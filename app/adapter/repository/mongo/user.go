@@ -60,6 +60,7 @@ func (r *UserRepository) Save(ctx context.Context, user *domain.User) error {
 		Phone:     user.Phone,
 		Email:     user.Email,
 		Role:      user.Role,
+		Policy:    user.Policy,
 		CreatedOn: time.Now(),
 		UpdatedOn: time.Now(),
 	})
